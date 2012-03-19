@@ -4,6 +4,13 @@ const url = require('url')
 const qs = require('querystring')
 const index = require('fs').readFileSync(__dirname+'/index.html')
 
+function afterwards (res, wkhtmltopdf) {
+   if (!res.finished) {
+      wkhtmltopdf.kill('SIGTERM')
+      res.end('Unable to load within 5 seconds')
+   }
+}
+
 function snagit (query, res) {
    query.html || (query.html = null)
    query.url  || (query.url  = null)
@@ -23,6 +30,7 @@ function snagit (query, res) {
       var wkhtmltopdf = spawn('wkhtmltopdf',[ (query.html ? '-' : query.url),'-'])
       if (query.html) wkhtmltopdf.stdin.end(query.html)
       wkhtmltopdf.stdout.pipe(res)
+      setTimeout(afterwards, 5000, res, wkhtmltopdf)
    }
 }
 
