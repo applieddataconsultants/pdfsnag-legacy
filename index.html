@@ -1,0 +1,22 @@
+<title>pdfsnag</title>
+<h3>pdfsnag - streaming pdf generator</h3>
+<h4>Params</h4>
+<pre>
+   <b>url</b>: url to generate pdf from
+   <b>html</b>: html to generate pdf from
+   <b>name</b>: name of generated pdf (default: output.pdf)
+</pre>
+<h4>GET Examples</h4>
+<pre>
+   <a href='/?url=google.com'>?url=google.com</a>
+   <a href='/?html=<h1>Hi Mom&name=to_mom'>?html=&lt;h1&gt;Hi mom&amp;to_mom</a>
+</pre>
+<h4>POST Example/Form</h4>
+<form method='post'>
+   <p>
+      Name: <input name=name value=mygoogles>
+      Url: <input type=url name=url value=http://google.com>
+      <button type='submit'>Let It Rip</button>
+   </p>
+   <p>Html:<br> <textarea name=html cols=140, rows=30></textarea></p>
+</form>
