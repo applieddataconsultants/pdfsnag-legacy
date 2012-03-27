@@ -1,22 +1,99 @@
 <title>pdfsnag</title>
+<link href='http://fonts.googleapis.com/css?family=Average' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+<style>
+body {
+    font-family: sans-serif;
+    background-color: #602E00;
+    color: #BE9054;
+    padding: 20px 10% 10px;
+    font-size: 15px;
+}
+
+h3, h4 {
+    text-shadow: -1px 1px 1px #444;
+    font-family: 'Average', serif;
+}
+
+h3 {
+    font-size: 3.5em;
+    text-align: center;
+}
+
+h4 {
+    color: lightblue;
+    font-size: 1.2em;
+}
+
+pre {
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 16px 16px -16px #000;
+    color: #000;
+    border: none;
+}
+
+form {
+    background-color: rgba(255,255,255,0.1);
+    padding: 30px;
+    color: #fff;
+    font-family: 'Average', serif;
+    border-radius: 4px;
+}
+
+input, textarea {
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 16px 16px -16px #000;
+}
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    -moz-box-sizing: border-box;
+}
+
+button {
+    font-family: 'Average', serif;
+    border: none;
+    padding: 15px;
+    margin-top: -15px;
+    border-radius: 10px;
+    float: right;
+    box-shadow: 0px 0px 4px #000;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: lightblue;
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+}
+</style>
 <h3>pdfsnag - streaming pdf generator</h3>
-<h4>Params</h4>
+<a href="http://github.com/applieddataconsultants/pdfsnag"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+<h4>Request Params (GET and POST)</h4>
 <pre>
    <b>url</b>: url to generate pdf from
    <b>html</b>: html to generate pdf from
    <b>name</b>: name of generated pdf (default: output.pdf)
 </pre>
-<h4>GET Examples</h4>
+<h4>Example: Sample GET Requests</h4>
 <pre>
    <a href='/?url=google.com'>?url=google.com</a>
    <a href='/?html=<h1>Hi Mom&name=to_mom'>?html=&lt;h1&gt;Hi mom&amp;to_mom</a>
 </pre>
-<h4>POST Example/Form</h4>
+<h4>Example: POST Example/Form</h4>
 <form method='post'>
    <p>
       Name: <input name=name value=mygoogles>
       Url: <input type=url name=url value=http://google.com>
       <button type='submit'>Let It Rip</button>
    </p>
-   <p>Html:<br> <textarea name=html cols=140, rows=30></textarea></p>
+   <p>Html:<br> <textarea name=html rows=15></textarea></p>
 </form>

@@ -16,7 +16,6 @@ function snagit (query, res) {
    query.url  || (query.url  = null)
    query.name || (query.name = 'output')
 
-
    if (!query.html && !query.url) {
       res.writeHead(200, { 'Content-Type': 'text/html' })
       res.end(index)
@@ -37,7 +36,7 @@ function snagit (query, res) {
 http.createServer( function (req, res) {
    var query = url.parse(req.url, true).query
 
-   if (req.method == 'POST') {
+   if (req.method === 'POST') {
       req.setEncoding('utf-8')
       var body = ''
       req.on('data', function (chunk) {
