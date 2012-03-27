@@ -1,3 +1,16 @@
+# pdfsnag
+
+Streaming htmltopdf web service
+
+## Setup
+
+Requires that you have [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) binary in your PATH.  See below for instructions on how to set that up on Linux server environment:
+
+
+```
+   node app.js
+```
+
 ## Installing wkhtmltopdf standalone (w/out X)
 
 ```sh
