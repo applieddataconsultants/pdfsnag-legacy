@@ -8,9 +8,12 @@ all: watch
 watch:
 	@always app.js
 
-deploy_live: server = sawyer@172.25.20.120
+deploy_live: serverA = sawyer@172.25.20.111
+deploy_live: serverB = sawyer@172.25.20.120
 deploy_live:
-	@rsync -az --exclude=".git" --delete * ${server}:${path}
-	@echo -e " ${instance} | copied files to ${server}"
-	@ssh ${server} "sudo restart ${project}"
-	@echo -e " ${instance} | restarting app on ${server}"
+	@rsync -az --exclude=".git" --delete * ${serverA}:${path}
+	@rsync -az --exclude=".git" --delete * ${serverB}:${path}
+	@echo -e " ${instance} | copied files to ${serverA} and ${serverB}"
+	@ssh ${serverA} "sudo restart ${project}"
+	@ssh ${serverB} "sudo restart ${project}"
+	@echo -e " ${instance} | restarting app on ${serverA} and ${serverB}"
