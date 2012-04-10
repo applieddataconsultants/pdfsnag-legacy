@@ -26,7 +26,7 @@ function snagit (query, res) {
          'Content-Disposition': 'attachment; filename='+query.name+'.pdf'
       })
 
-      var wkhtmltopdf = spawn('wkhtmltopdf',[ (query.html ? '-' : query.url),'-'])
+      var wkhtmltopdf = spawn('wkhtmltopdf',[ (query.html ? '-' : query.url),'-','-L','3mm','-T','3mm','-B','3mm','-R','3mm'])
       if (query.html) wkhtmltopdf.stdin.end(query.html)
       wkhtmltopdf.stdout.pipe(res)
       setTimeout(afterwards, 30000, res, wkhtmltopdf)
@@ -47,4 +47,5 @@ http.createServer( function (req, res) {
          snagit(query, res)
       })
    } else snagit(query, res)
+
 }).listen(8003)
