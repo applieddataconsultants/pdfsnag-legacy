@@ -2,6 +2,7 @@ const spawn = require('child_process').spawn
 const http = require('http')
 const url = require('url')
 const qs = require('querystring')
+const port = process.argv[2] || 8003
 
 function Undefined(){}
 function StringStripped(value){ return value.replace('$','').replace('&','').replace(';','') }
@@ -92,8 +93,6 @@ function snagit (query, res) {
 
    var opts = getopts(query)
 
-   console.log(opts)
-
    if (!query.html && !query.url) {
       res.writeHead(200, { 'Content-Type': 'text/html' })
       res.end(index)
@@ -126,4 +125,4 @@ http.createServer( function (req, res) {
       })
    } else snagit(query, res)
 
-}).listen(8003)
+}).listen(port)

@@ -1,0 +1,15 @@
+{
+  "author": "Marc Harter <wavded@gmail.com> (wavded.com)",
+  "name": "pdfsnag",
+  "description": "Streaming html to pdf server",
+  "keywords": ["wkhtmltopdf",'html","pdf","conversion"],
+  "version": "0.1.0",
+  "homepage": "http://pdfsnag.adc4gis.com",
+  "bin": { "pdfsnag": "app.js" },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/applieddataconsultants/pdfsnag.git"
+  },
+  "main": "app.js",
+  "engines": { "node": "*" }
+}
