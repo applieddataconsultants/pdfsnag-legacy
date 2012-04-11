@@ -9,7 +9,8 @@ Requires that you have [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) binar
 To start server run:
 
 ```
-   node app.js
+   sudo npm install -g pdfsnag
+   pdfsnag [port]
 ```
 
 ### Installing wkhtmltopdf standalone (w/out X)
