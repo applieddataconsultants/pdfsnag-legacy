@@ -77,16 +77,20 @@ button:hover {
 </style>
 <h3>pdfsnag - streaming pdf generator</h3>
 <a href="http://github.com/applieddataconsultants/pdfsnag"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
-<h4>Request Params (GET and POST)</h4>
+<h4>Base Request Params (GET and POST)</h4>
 <pre>
    <b>url</b>: url to generate pdf from
    <b>html</b>: html to generate pdf from
    <b>name</b>: name of generated pdf (default: output.pdf)
 </pre>
+<h4>Additional wkhtmltopdf Request Params Supported</h4>
+<p><i>%OPTIONS%</i></p>
+<p><a href='http://madalgo.au.dk/~jakobt/wkhtmltoxdoc/wkhtmltopdf_0.10.0_rc2-doc.html' style='color: white'>Read about the options</a></p>
 <h4>Example: Sample GET Requests</h4>
 <pre>
    <a href='/?url=google.com'>?url=google.com</a>
    <a href='/?html=<h1>Hi Mom&name=to_mom'>?html=&lt;h1&gt;Hi mom&amp;to_mom</a>
+   <a href='/?url=google.com&zoom=3&orientation=Landscape&grayscale=&encoding=UTF-8&page-height=17in&page-width=11in'>?url=google.com&zoom=3&orientation=Landscape&grayscale=&encoding=UTF-8&page-height=17in&page-width=11in</a>
 </pre>
 <h4>Example: POST Example/Form</h4>
 <form method='post'>
