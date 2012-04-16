@@ -3,7 +3,7 @@
   "name": "pdfsnag",
   "description": "Streaming html to pdf server",
   "keywords": ["wkhtmltopdf","html","pdf","conversion"],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "http://pdfsnag.adc4gis.com",
   "bin": { "pdfsnag": "pdfsnag.js" },
   "repository": {
