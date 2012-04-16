@@ -122,7 +122,8 @@ http.createServer( function (req, res) {
          body += chunk
       })
       req.on('end', function () {
-         query = qs.parse(body)
+         body = qs.parse(body)
+         for (var i in body) query[i] = body[i]
          snagit(query, res)
       })
    } else snagit(query, res)
