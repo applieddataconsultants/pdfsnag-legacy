@@ -4,7 +4,7 @@ const spawn = require('child_process').spawn
 const http = require('http')
 const url = require('url')
 const qs = require('querystring')
-const port = process.argv[2] || 8003
+const port = process.argv[2] || 3000
 
 function Undefined(){}
 function StringStripped(value){ return value.replace('$','').replace('&','').replace(';','') }
