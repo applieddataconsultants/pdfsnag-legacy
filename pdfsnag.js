@@ -105,7 +105,7 @@ function snagit (query, res) {
          'Content-Disposition': 'attachment; filename='+query.name+'.pdf'
       })
 
-      var wkhtmltopdf = spawn('wkhtmltopdf',[ (query.html ? '-' : query.url),'-'].concat(opts))
+      var wkhtmltopdf = spawn('/bin/sh', ['-c', 'wkhtmltopdf ' + (query.html ? '-' : query.url) + ' - ' + opts.join(' ') + ' | cat'])
       if (query.html) wkhtmltopdf.stdin.end(query.html)
       wkhtmltopdf.stdout.pipe(res)
       setTimeout(afterwards, 30000, res, wkhtmltopdf)
