@@ -23,7 +23,7 @@ tmux:
 	@tmux attach -t ${project}
 
 # sample deployment script (assumes upstart as daemon)
-deploy_live: serverA = sawyer@172.25.20.120
+deploy_live: serverA = sawyer@172.25.20.111
 deploy_live: serverB = sawyer@172.25.20.120
 deploy_live:
 	@ssh ${serverA} "sudo npm install -g ${project}"
