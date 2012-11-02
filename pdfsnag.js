@@ -5,6 +5,7 @@ var http = require('http')
 var url = require('url')
 var qs = require('querystring')
 var port = process.argv[2] || 3000
+var util = require('util')
 
 function Undefined(){}
 function StringStripped(value){ return value.replace('$','').replace('&','').replace(';','') }
@@ -71,7 +72,8 @@ var forkme = require('fs').readFileSync(__dirname+'/forkme.png')
 
 function afterwards (res, wkhtmltopdf) {
   if (!res.finished) {
-    wkhtmltopdf.kill('SIGTERM')
+    util.log('error - wkhtmltopdf did not complete in a timely manner, killing')
+    wkhtmltopdf.kill('SIGKILL')
     res.end('Unable to load within 30 seconds')
   }
 }
@@ -104,6 +106,7 @@ function snagit (query, res) {
   var wkhtmltopdf = spawn('/bin/sh', ['-c', 'wkhtmltopdf ' + (query.html ? '-' : '"'+encodeURI(decodeURI(query.url))+'"') + ' - ' + opts.join(' ') + ' | cat'])
   if (query.html) wkhtmltopdf.stdin.end(query.html)
   wkhtmltopdf.stdout.pipe(res)
+  util.log('info - '+query.name+' '+(query.url || '"'+query.html.substr(25, 50).replace(/\n|\r/g,'')+'"')+' '+ JSON.stringify(opts))
   setTimeout(afterwards, 30000, res, wkhtmltopdf)
 }
 
