@@ -2,6 +2,8 @@
 
 Streaming htmltopdf web service
 
+![pdfsnag](https://raw.github.com/applieddataconsultants/pdfsnag/master/pdfsnag.png)
+
 ## Setup
 
 Requires that you have [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) binary in your PATH.  See below for instructions on how to set that up on Linux server environment.
