@@ -73,8 +73,9 @@ var forkme = require('fs').readFileSync(__dirname+'/forkme.png')
 function afterwards (res, wkhtmltopdf) {
   if (!res.finished) {
     util.log('error - wkhtmltopdf did not complete in a timely manner, killing')
+    wkhtmltopdf.stdout.destroy()
+    wkhtmltopdf.stderr.destroy()
     wkhtmltopdf.kill('SIGKILL')
-    res.end('Unable to load within 30 seconds')
   }
 }
 
