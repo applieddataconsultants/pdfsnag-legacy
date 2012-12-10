@@ -1,4 +1,10 @@
 
+0.1.5 / 2012-12-10 
+==================
+
+  * more aggressively stopping wkhtmltopdf on error
+  * added; image
+
 0.1.4 / 2012-11-02 
 ==================
 
