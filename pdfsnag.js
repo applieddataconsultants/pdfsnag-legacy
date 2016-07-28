@@ -7,8 +7,8 @@ var qs = require('querystring')
 var port = process.argv[2] || 3000
 var util = require('util')
 
-function Undefined(){}
-function StringStripped(value){ return value.replace('$','').replace('&','').replace(';','') }
+function Undefined() {}
+function StringStripped(value) { return value.replace('$','').replace('&','').replace(';','') }
 
 var acceptableOpts = {
   'background': Undefined,
@@ -64,13 +64,13 @@ var acceptableOpts = {
   'title': StringStripped,
   'user-style-sheet': StringStripped,
   'username': StringStripped,
-  'zoom': Number
+  'zoom': Number,
 }
 
-var index = require('fs').readFileSync(__dirname+'/index.html').toString().replace('%OPTIONS%', Object.keys(acceptableOpts))
-var forkme = require('fs').readFileSync(__dirname+'/forkme.png')
+var index = require('fs').readFileSync(__dirname + '/index.html').toString().replace('%OPTIONS%', Object.keys(acceptableOpts))
+var forkme = require('fs').readFileSync(__dirname + '/forkme.png')
 
-function afterwards (res, wkhtmltopdf) {
+function afterwards(res, wkhtmltopdf) {
   if (!res.finished) {
     util.log('error - wkhtmltopdf did not complete in a timely manner, killing')
     wkhtmltopdf.stdout.destroy()
@@ -79,12 +79,12 @@ function afterwards (res, wkhtmltopdf) {
   }
 }
 
-function getopts (query) {
+function getopts(query) {
   var opts = []
-  Object.keys(query).forEach(function (opt) {
+  Object.keys(query).forEach(function(opt) {
     var Type = acceptableOpts[opt]
     if (Type) {
-      opts.push('--'+opt)
+      opts.push('--' + opt)
       if (Type != Undefined) opts.push(Type(query[opt]))
     }
   })
@@ -92,46 +92,47 @@ function getopts (query) {
   return opts
 }
 
-function snagit (query, res) {
+function snagit(query, res) {
   query.html || (query.html = null)
-  query.url  || (query.url  = null)
+  query.url || (query.url = null)
   query.name || (query.name = 'output')
 
   var opts = getopts(query)
 
   res.writeHead(200, {
     'Content-Type': 'application/pdf',
-    'Content-Disposition': 'attachment; filename='+query.name+'.pdf'
+    'Content-Disposition': 'attachment; filename=' + query.name + '.pdf',
   })
 
-  var wkhtmltopdf = spawn('/bin/sh', ['-c', 'wkhtmltopdf ' + (query.html ? '-' : '"'+encodeURI(decodeURI(query.url))+'"') + ' - ' + opts.join(' ') + ' | cat'])
+  var wkhtmltopdf = spawn('wkhtmltopdf', opts.concat([query.html ? '-' : query.url, '-']))
   if (query.html) wkhtmltopdf.stdin.end(query.html)
+  wkhtmltopdf.stderr.pipe(process.stderr)
   wkhtmltopdf.stdout.pipe(res)
-  util.log('info - '+query.name+' '+(query.url || '"'+query.html.substr(25, 50).replace(/\n|\r/g,'')+'"')+' '+ JSON.stringify(opts))
+  util.log('info - ' + query.name + ' ' + (query.url || '"' + query.html.substr(25, 50).replace(/\n|\r/g,'') + '"') + ' ' + JSON.stringify(opts))
   setTimeout(afterwards, 30000, res, wkhtmltopdf)
 }
 
-http.createServer( function (req, res) {
+http.createServer(function(req, res) {
   var query = url.parse(req.url, true).query
 
   if (req.method === 'POST') {
     req.setEncoding('utf-8')
     var body = ''
-    req.on('data', function (chunk) {
+    req.on('data', function(chunk) {
       body += chunk
     })
-    req.on('end', function () {
+    req.on('end', function() {
       body = qs.parse(body)
       for (var i in body) query[i] = body[i]
-        snagit(query, res)
+      snagit(query, res)
     })
   } else if (!query.html && !query.url) {
     if (req.url == '/forkme.png') {
-      res.writeHead(200, { 'Content-Type': 'image/png' })
+      res.writeHead(200, {'Content-Type': 'image/png'})
       res.end(forkme)
     }
     else {
-      res.writeHead(200, { 'Content-Type': 'text/html' })
+      res.writeHead(200, {'Content-Type': 'text/html'})
       res.end(index)
     }
   }
