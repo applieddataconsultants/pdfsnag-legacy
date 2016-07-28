@@ -1,28 +1,33 @@
-
-0.1.5 / 2012-12-10 
+1.0.0 / 2016-07-28
 ==================
 
-  * more aggressively stopping wkhtmltopdf on error
-  * added; image
+-	Add eslintrc and remove Makefile
+-	Update support for newer versions of wkhtmltopdf and Node
 
-0.1.4 / 2012-11-02 
+0.1.5 / 2012-12-10
 ==================
 
-  * added; logging
-  * minor; updated makefile
+-	more aggressively stopping wkhtmltopdf on error
+-	added; image
 
-0.1.3 / 2012-08-27 
+0.1.4 / 2012-11-02
 ==================
 
-  * fixed; url encode/decode issue
-  * added; forkme
+-	added; logging
+-	minor; updated makefile
 
-0.1.1 / 2012-04-16 
+0.1.3 / 2012-08-27
 ==================
 
-  * added; allow for mixture of get and post values
+-	fixed; url encode/decode issue
+-	added; forkme
 
-0.1.0 / 2012-04-11 
+0.1.1 / 2012-04-16
 ==================
 
-  * added; ability to pass in custom options
+-	added; allow for mixture of get and post values
+
+0.1.0 / 2012-04-11
+==================
+
+-	added; ability to pass in custom options
