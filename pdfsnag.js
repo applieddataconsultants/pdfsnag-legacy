@@ -93,7 +93,7 @@ function getopts(query) {
 }
 
 function snagit(query, res) {
-  query.html || (query.html = null)
+  query.html || (query.html = '')
   query.url || (query.url = null)
   query.name || (query.name = 'output')
 
