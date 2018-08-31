@@ -104,7 +104,7 @@ function snagit(query, res) {
     'Content-Disposition': 'attachment; filename=' + query.name + '.pdf',
   })
 
-  var wkhtmltopdf = spawn('/bin/sh', ['-c', 'wkhtmltopdf ' + opts.join(' ') + ' ' + (query.html ? '-' : '"' + encodeURI(decodeURI(query.url)) + '"') + ' - | cat'])
+  var wkhtmltopdf = spawn('/bin/sh', ['-c', 'wkhtmltopdf ' + opts.join(' ') + ' ' + (query.html ? '-' : '"' + StringStripped(encodeURI(decodeURI(query.url))) + '"') + ' - | cat'])
   if (query.html) wkhtmltopdf.stdin.end(query.html)
   wkhtmltopdf.stdout.pipe(res)
   util.log('info - ' + query.name + ' ' + (query.url || '"' + query.html.substr(25, 50).replace(/\n|\r/g,'') + '"') + ' ' + JSON.stringify(opts))
