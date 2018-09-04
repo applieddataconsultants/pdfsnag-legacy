@@ -8,7 +8,7 @@ var port = process.argv[2] || 3000
 var util = require('util')
 
 function Undefined() {}
-function StringStripped(value) { return value.replace('$','').replace('&','').replace(';','') }
+function StringStripped(value) { return value.replace('$','\\$').replace('&','\\&').replace(';','\\;') }
 
 var acceptableOpts = {
   'background': Undefined,
