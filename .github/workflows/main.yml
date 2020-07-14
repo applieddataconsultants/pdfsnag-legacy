@@ -6,13 +6,14 @@ jobs:
     strategy:
       matrix:
         deno: ['v1.x']
-    name: Deno v${{ matrix.deno }}
+    name: Deno ${{ matrix.deno }}
     steps:
       - uses: actions/checkout@v2
       - uses: denolib/setup-deno@v2
         with:
           deno-version: ${{ matrix.deno }}
-      - run: wget --quiet https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && cp wkhtmltox/bin/wk* /usr/local/bin/ && rm -rf wkhtmltox
+      - run: wget --quiet https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
+      - run: echo "::add-path::/wkhtmltox/bin/"
       - run: deno fmt --check
       - run: deno lint --unstable
       - run: deno test --allow-run --allow-write
