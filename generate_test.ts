@@ -2,7 +2,7 @@ import generate from "./generate.ts";
 import { assertNotEquals } from "./deps.ts";
 
 Deno.test("generate", async () => {
-  let buf = await generate({ url: "https://google.com", grayscale: "" });
+  let buf = await generate({ url: "http://example.com", grayscale: "" });
   assertNotEquals(buf.length, 0);
   await Deno.writeFile("url.pdf", buf);
 
