@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         deno: ['v1.x']
-    name: Deno v${{ matrix.node }}
+    name: Deno v${{ matrix.deno }}
     steps:
       - uses: actions/checkout@v2
       - uses: denolib/setup-deno@v2
