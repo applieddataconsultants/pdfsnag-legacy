@@ -1,31 +1,40 @@
 <title>pdfsnag</title>
-<link href='http://fonts.googleapis.com/css?family=Average' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+<link
+  href="http://fonts.googleapis.com/css?family=Average"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="http://fonts.googleapis.com/css?family=Ubuntu+Mono"
+  rel="stylesheet"
+  type="text/css"
+/>
 <style>
-body {
+  body {
     font-family: sans-serif;
-    background-color: #602E00;
-    color: #BE9054;
+    background-color: #602e00;
+    color: #be9054;
     padding: 20px 10% 10px;
     font-size: 15px;
-}
+  }
 
-h3, h4 {
+  h3,
+  h4 {
     text-shadow: -1px 1px 1px #444;
     font-family: 'Average', serif;
-}
+  }
 
-h3 {
+  h3 {
     font-size: 3.5em;
     text-align: center;
-}
+  }
 
-h4 {
+  h4 {
     color: lightblue;
     font-size: 1.2em;
-}
+  }
 
-pre {
+  pre {
     font-family: 'Ubuntu Mono', monospace;
     background-color: #fff;
     padding: 20px;
@@ -33,30 +42,31 @@ pre {
     box-shadow: 0px 16px 16px -16px #000;
     color: #000;
     border: none;
-}
+  }
 
-form {
-    background-color: rgba(255,255,255,0.1);
+  form {
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 30px;
     color: #fff;
     font-family: 'Average', serif;
     border-radius: 4px;
-}
+  }
 
-input, textarea {
+  input,
+  textarea {
     border: none;
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
     box-shadow: 0px 16px 16px -16px #000;
-}
-textarea {
+  }
+  textarea {
     box-sizing: border-box;
     width: 100%;
     -moz-box-sizing: border-box;
-}
+  }
 
-button {
+  button {
     font-family: 'Average', serif;
     border: none;
     padding: 15px;
@@ -67,25 +77,28 @@ button {
     font-weight: bold;
     font-size: 20px;
     background-color: lightblue;
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
     cursor: pointer;
-}
+  }
 
-button:hover {
+  button:hover {
     background-color: white;
-}
+  }
 </style>
 <h3>pdfsnag - streaming pdf generator</h3>
-<a href="http://github.com/applieddataconsultants/pdfsnag"><img style="position: absolute; top: 0; right: 0; border: 0;" src="forkme.png" alt="Fork me on GitHub"></a>
 <h4>Base Request Params (GET and POST)</h4>
 <pre>
    <b>url</b>: url to generate pdf from
    <b>html</b>: html to generate pdf from
    <b>name</b>: name of generated pdf (default: output.pdf)
 </pre>
-<h4>Additional wkhtmltopdf Request Params Supported</h4>
-<p><i>%OPTIONS%</i></p>
-<p><a href='http://madalgo.au.dk/~jakobt/wkhtmltoxdoc/wkhtmltopdf_0.10.0_rc2-doc.html' style='color: white'>Read about the options</a></p>
+<p>
+  <a
+    href="http://madalgo.au.dk/~jakobt/wkhtmltoxdoc/wkhtmltopdf_0.10.0_rc2-doc.html"
+    style="color: white;"
+    >Read about the options</a
+  >
+</p>
 <h4>Example: Sample GET Requests</h4>
 <pre>
    <a href='/?url=google.com'>?url=google.com</a>
@@ -93,11 +106,14 @@ button:hover {
    <a href='/?url=google.com&zoom=3&orientation=Landscape&grayscale=&encoding=UTF-8&page-height=17in&page-width=11in'>?url=google.com&zoom=3&orientation=Landscape&grayscale=&encoding=UTF-8&page-height=17in&page-width=11in</a>
 </pre>
 <h4>Example: POST Example/Form</h4>
-<form method='post'>
-   <p>
-      Name: <input name=name value=mygoogles>
-      Url: <input type=url name=url value=http://google.com>
-      <button type='submit'>Let It Rip</button>
-   </p>
-   <p>Html:<br> <textarea name=html rows=15></textarea></p>
+<form method="POST" enctype="application/x-www-form-urlencoded">
+  <p>
+    Name: <input name="name" value="mygoogles" />
+    Url: <input type=url name=url value=http://google.com>
+    <button type="submit">Let It Rip</button>
+  </p>
+  <p>
+    Html:<br />
+    <textarea name="html" rows="15"></textarea>
+  </p>
 </form>
