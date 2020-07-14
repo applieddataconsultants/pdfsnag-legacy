@@ -12,7 +12,7 @@ jobs:
       - uses: denolib/setup-deno@v2
         with:
           deno-version: ${{ matrix.deno }}
-      - run: sudo apt-get install wkhtmltopdf
+      - run: wget --quiet https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && cp wkhtmltox/bin/wk* /usr/local/bin/ && rm -rf wkhtmltox
       - run: deno fmt --check
       - run: deno lint --unstable
       - run: deno test --allow-run --allow-write
