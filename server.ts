@@ -12,9 +12,9 @@ for await (let req of server) {
   }
 
   // TODO: URLSearchParams in browser converts + to space but not in Deno.
-  search = search.replace(/\+/g, ' ')
+  search = search.replace(/\+/g, " ");
 
-  let q = new URLSearchParams(search.replace(/\+/g, ' '));
+  let q = new URLSearchParams(search.replace(/\+/g, " "));
   let qv = Object.create(null);
   for (let [k, v] of q) qv[k] = v;
 
